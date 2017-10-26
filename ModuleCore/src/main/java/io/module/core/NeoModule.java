@@ -1,9 +1,16 @@
 package io.module.core;
 
+import android.app.Application;
+
 /**
  * @author kiva
  */
 
 public abstract class NeoModule {
-    public abstract void launch();
+    public static void init(Application application) {
+    }
+
+    public static NeoModule getCore() {
+        return null;
+    }
 }
