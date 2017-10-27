@@ -3,7 +3,8 @@ package io.module.core.component.layout.utils;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.neomodule.layout.LayoutInfo;
+import io.module.core.component.layout.LayoutInfo;
+
 
 /**
  * @author kiva

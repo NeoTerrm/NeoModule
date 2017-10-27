@@ -10,7 +10,7 @@ import org.json.JSONException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import io.neomodule.layout.LayoutInfo;
+import io.module.core.component.layout.LayoutInfo;
 
 /**
  * @author kiva
