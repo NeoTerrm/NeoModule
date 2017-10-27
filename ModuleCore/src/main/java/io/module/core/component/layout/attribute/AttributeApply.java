@@ -27,7 +27,7 @@ public class AttributeApply {
     /**
      * 存储处理中的状态
      */
-    private static class Status {
+    private static final class Status {
         int layoutRule;
         int marginLeft = 0;
         int marginRight = 0;
@@ -46,11 +46,64 @@ public class AttributeApply {
         }
     }
 
+    public static final class Builder {
+        private View view;
+        private Map<String, String> attrs;
+        private ViewGroup parent;
+
+        Builder(View view) {
+            this.view = view;
+        }
+
+        public Builder withDeclaredAttributes(Map<String, String> attrs) {
+            this.attrs = attrs;
+            return this;
+        }
+
+        public Builder withViewParent(ViewGroup parent) {
+            this.parent = parent;
+            return this;
+        }
+
+        public void apply(Configuration configuration) {
+            AttributeApply apply = new AttributeApply(view, attrs, parent);
+            apply.apply(configuration);
+        }
+    }
+
+    public static AttributeApply.Builder from(View view) {
+        return new Builder(view);
+    }
+
+    public static Map<String, ViewAttributeRunnable> createDefaultAttributeApply(final ImageLoader imageLoader) {
+        Map<String, ViewAttributeRunnable> viewRunnables = new HashMap<>(30);
+
+        viewRunnables.put("scaleType", new ScaleTypeApply());
+        viewRunnables.put("orientation", new OrientationApply());
+        viewRunnables.put("text", new TextApply());
+        viewRunnables.put("textSize", new TextSizeApply());
+        viewRunnables.put("textColor", new TextColorApply());
+        viewRunnables.put("textStyle", new TextStyleApply());
+        viewRunnables.put("textAlignment", new TextAlignmentApply());
+        viewRunnables.put("ellipsize", new EllipsizeApply());
+        viewRunnables.put("singleLine", new SingleLineApply());
+        viewRunnables.put("hint", new HintApply());
+        viewRunnables.put("inputType", new InputTypeApply());
+        viewRunnables.put("gravity", new GravityApply());
+        viewRunnables.put("src", new ImageApply(imageLoader));
+        viewRunnables.put("visibility", new VisibilityApply());
+        viewRunnables.put("clickable", new ClickableApply());
+        viewRunnables.put("tag", new TagApply());
+        viewRunnables.put("onClick", new ClickableApply());
+
+        return viewRunnables;
+    }
+
     private View view;
     private Map<String, String> attrs;
     private ViewGroup parent;
 
-    public AttributeApply(View view, Map<String, String> attrs, ViewGroup parent) {
+    private AttributeApply(View view, Map<String, String> attrs, ViewGroup parent) {
         this.view = view;
         this.attrs = attrs;
         this.parent = parent;
@@ -512,29 +565,5 @@ public class AttributeApply {
             parent.setTag(info);
         }
         return info;
-    }
-
-    public static Map<String, ViewAttributeRunnable> declareDefaultApply(final ImageLoader imageLoader) {
-        Map<String, ViewAttributeRunnable> viewRunnables = new HashMap<>(30);
-
-        viewRunnables.put("scaleType", new ScaleTypeApply());
-        viewRunnables.put("orientation", new OrientationApply());
-        viewRunnables.put("text", new TextApply());
-        viewRunnables.put("textSize", new TextSizeApply());
-        viewRunnables.put("textColor", new TextColorApply());
-        viewRunnables.put("textStyle", new TextStyleApply());
-        viewRunnables.put("textAlignment", new TextAlignmentApply());
-        viewRunnables.put("ellipsize", new EllipsizeApply());
-        viewRunnables.put("singleLine", new SingleLineApply());
-        viewRunnables.put("hint", new HintApply());
-        viewRunnables.put("inputType", new InputTypeApply());
-        viewRunnables.put("gravity", new GravityApply());
-        viewRunnables.put("src", new ImageApply(imageLoader));
-        viewRunnables.put("visibility", new VisibilityApply());
-        viewRunnables.put("clickable", new ClickableApply());
-        viewRunnables.put("tag", new TagApply());
-        viewRunnables.put("onClick", new ClickableApply());
-
-        return viewRunnables;
     }
 }

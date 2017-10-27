@@ -226,6 +226,9 @@ public class NeoLayoutInflater {
      */
     private static void applyAttributes(View view, Map<String, String> attrs, ViewGroup parent) {
         CONFIG.createViewRunnablesIfNeeded();
-        new AttributeApply(view, attrs, parent).apply(CONFIG);
+        AttributeApply.from(view)
+                .withDeclaredAttributes(attrs)
+                .withViewParent(parent)
+                .apply(CONFIG);
     }
 }

@@ -25,6 +25,6 @@ public class Configuration {
         if (viewRunnables != null) {
             return;
         }
-        viewRunnables = AttributeApply.declareDefaultApply(imageLoader);
+        viewRunnables = AttributeApply.createDefaultAttributeApply(imageLoader);
     }
 }
