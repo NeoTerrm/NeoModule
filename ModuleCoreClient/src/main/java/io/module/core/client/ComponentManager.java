@@ -1,4 +1,4 @@
-package io.module.core.component;
+package io.module.core.client;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;

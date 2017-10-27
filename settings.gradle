@@ -1,1 +1,1 @@
-include ':app', ':ModuleCore'
+include ':app', ':ModuleCore', ':ModuleCoreClient'
