@@ -140,7 +140,7 @@ public class AttributeApply {
 
             if (status.layoutRule != config.noLayoutRule && parent instanceof RelativeLayout) {
                 if (status.layoutTarget) {
-                    int anchor = UniqueId.idFromString(parent, AttributeParser.parseId(entry.getValue()));
+                    int anchor = UniqueId.generateFromString(parent, AttributeParser.parseId(entry.getValue()));
                     ((RelativeLayout.LayoutParams) layoutParams).addRule(status.layoutRule, anchor);
                 } else if (entry.getValue().equals("true")) {
                     ((RelativeLayout.LayoutParams) layoutParams).addRule(status.layoutRule);

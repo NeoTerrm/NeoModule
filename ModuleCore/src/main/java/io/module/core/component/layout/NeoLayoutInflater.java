@@ -131,7 +131,7 @@ public class NeoLayoutInflater {
     @SuppressWarnings("unchecked")
     @Nullable
     public static <T extends View> T findViewById(View view, String id) {
-        int idNum = UniqueId.idFromString(view, id);
+        int idNum = UniqueId.generateFromString(view, id);
         if (idNum == 0) return null;
         return (T) view.findViewById(idNum);
     }

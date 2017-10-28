@@ -17,7 +17,7 @@ public class UniqueId {
         return ID++;
     }
 
-    public static int idFromString(View view, String id) {
+    public static int generateFromString(View view, String id) {
         if (!(view instanceof ViewGroup)) return 0;
         Object tag = view.getTag();
         if (!(tag instanceof LayoutInfo)) return 0; // not inflated by this class
@@ -25,7 +25,7 @@ public class UniqueId {
         if (!info.nameToIdNumber.containsKey(id)) {
             ViewGroup grp = (ViewGroup) view;
             for (int i = 0; i < grp.getChildCount(); i++) {
-                int val = idFromString(grp.getChildAt(i), id);
+                int val = generateFromString(grp.getChildAt(i), id);
                 if (val != 0) return val;
             }
             return 0;
