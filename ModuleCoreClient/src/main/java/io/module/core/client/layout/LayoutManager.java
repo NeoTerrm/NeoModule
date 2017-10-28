@@ -1,7 +1,5 @@
 package io.module.core.client.layout;
 
-import android.view.View;
-
 import java.io.File;
 import java.io.InputStream;
 
