@@ -11,14 +11,14 @@ import io.module.core.component.layout.interfaces.ViewAttributeRunnable;
  * @author kiva
  */
 
-public class Configuration {
+public class NeoLayoutConfig {
     public final int noLayoutRule = -999;
     public final String[] viewCorners = {"TopLeft", "TopRight", "BottomRight", "BottomLeft"};
 
     public Map<String, ViewAttributeRunnable> viewRunnables;
     public ImageLoader imageLoader = null;
 
-    Configuration() {
+    NeoLayoutConfig() {
     }
 
     void createViewRunnablesIfNeeded() {

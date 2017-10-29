@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.module.core.component.layout.Configuration;
+import io.module.core.component.layout.NeoLayoutConfig;
 import io.module.core.component.layout.LayoutInfo;
 import io.module.core.component.layout.interfaces.ImageLoader;
 import io.module.core.component.layout.interfaces.ViewAttributeRunnable;
@@ -41,7 +41,7 @@ public class AttributeApply {
         boolean hasCornerRadii = false;
         boolean layoutTarget = false;
 
-        Status(Configuration config) {
+        Status(NeoLayoutConfig config) {
             this.layoutRule = config.noLayoutRule;
         }
     }
@@ -65,7 +65,7 @@ public class AttributeApply {
             return this;
         }
 
-        public void apply(Configuration configuration) {
+        public void apply(NeoLayoutConfig configuration) {
             AttributeApply apply = new AttributeApply(view, attrs, parent);
             apply.apply(configuration);
         }
@@ -114,7 +114,7 @@ public class AttributeApply {
      *
      * @param config LayoutInflater的配置
      */
-    public void apply(Configuration config) {
+    public void apply(NeoLayoutConfig config) {
         Status status = new Status(config);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
         if (layoutParams == null) {
@@ -306,7 +306,7 @@ public class AttributeApply {
      * @param status     处理状态
      * @param colorValue # 或者 @color/ 开头的颜色值
      */
-    private void applyBackgroundColor(Configuration config, Status status, String colorValue) {
+    private void applyBackgroundColor(NeoLayoutConfig config, Status status, String colorValue) {
         int validatedColor = AttributeParser.parseColor(view, colorValue == null ? "#00000000" : colorValue);
 
         if (view instanceof Button || attrs.containsKey("pressedColor")) {
@@ -336,7 +336,7 @@ public class AttributeApply {
      * @param status     出炉状态
      * @param colorValue 颜色值
      */
-    private void applyPressedColor(Configuration config, Status status, int colorValue) {
+    private void applyPressedColor(NeoLayoutConfig config, Status status, int colorValue) {
         int pressedColor;
 
         if (attrs.containsKey("pressedColor")) {
@@ -387,7 +387,7 @@ public class AttributeApply {
      * @param gd        背景
      * @param pressedGd 按下背景，如果没有，设置为 gd 即可
      */
-    private void applyCorners(Configuration config, Status status, GradientDrawable gd, GradientDrawable pressedGd) {
+    private void applyCorners(NeoLayoutConfig config, Status status, GradientDrawable gd, GradientDrawable pressedGd) {
         if (status.hasCornerRadii) {
             float radii[] = new float[8];
             for (int i = 0; i < config.viewCorners.length; i++) {

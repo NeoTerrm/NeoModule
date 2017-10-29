@@ -32,7 +32,7 @@ import io.module.core.component.layout.utils.UniqueId;
 
 
 public class NeoLayoutInflater {
-    private static Configuration CONFIG = new Configuration();
+    private static NeoLayoutConfig CONFIG = new NeoLayoutConfig();
 
     public static void setImageLoader(ImageLoader il) {
         CONFIG.imageLoader = il;

@@ -3,7 +3,9 @@ package io.module.core.init;
 import android.app.Application;
 
 import io.module.core.client.ComponentManager;
+import io.module.core.client.error.ErrorManager;
 import io.module.core.client.layout.LayoutManager;
+import io.module.core.component.error.ErrorManagerImpl;
 import io.module.core.component.layout.LayoutManagerImpl;
 
 /**
@@ -17,6 +19,8 @@ public class NeoModuleInitializer {
      */
     public static final void init(Application application) {
         ComponentManager componentManager = ComponentManager.get();
+
         componentManager.registerComponent(LayoutManager.class, new LayoutManagerImpl(application));
+        componentManager.registerComponent(ErrorManager.class, new ErrorManagerImpl());
     }
 }
