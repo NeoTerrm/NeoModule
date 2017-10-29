@@ -5,10 +5,13 @@ package io.module.core.client.error;
  */
 
 public class ErrorInfo {
+    public static ErrorInfo from(Throwable throwable) {
+        return new ErrorInfo(throwable);
+    }
+
     private Throwable throwable;
 
-
-    public ErrorInfo(Throwable throwable) {
+    private ErrorInfo(Throwable throwable) {
         this.throwable = throwable;
     }
 
