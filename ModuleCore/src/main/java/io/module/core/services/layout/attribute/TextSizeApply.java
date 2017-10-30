@@ -8,7 +8,7 @@ import android.widget.TextView;
 import java.util.Map;
 
 import io.module.core.services.layout.interfaces.ViewAttributeRunnable;
-import io.neomodule.layout.utils.DimensionConverter;
+import io.module.core.services.layout.utils.DimensionConverter;
 
 /**
  * @author kiva

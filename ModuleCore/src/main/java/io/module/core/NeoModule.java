@@ -12,8 +12,4 @@ public abstract class NeoModule {
     public static void init(Application application) {
         NeoModuleInitializer.init(application);
     }
-
-    public static NeoModule getCore() {
-        return null;
-    }
 }

@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import io.neomodule.layout.listener.OnClickForwarder;
+import io.module.core.services.layout.listener.OnClickForwarder;
 
 /**
  * @author kiva
