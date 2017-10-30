@@ -2,11 +2,11 @@ package io.module.core.init;
 
 import android.app.Application;
 
-import io.module.core.client.ComponentManager;
-import io.module.core.client.error.ErrorManager;
-import io.module.core.client.layout.LayoutManager;
-import io.module.core.component.error.ErrorManagerImpl;
-import io.module.core.component.layout.LayoutManagerImpl;
+import io.module.core.client.ServiceManager;
+import io.module.core.client.error.ErrorManagerService;
+import io.module.core.client.layout.LayoutManagerService;
+import io.module.core.services.error.ErrorManagerServiceImpl;
+import io.module.core.services.layout.LayoutManagerServiceImpl;
 
 /**
  * @author kiva
@@ -18,9 +18,9 @@ public class NeoModuleInitializer {
      * @param application Android Application instance.
      */
     public static final void init(Application application) {
-        ComponentManager componentManager = ComponentManager.get();
+        ServiceManager serviceManager = ServiceManager.get();
 
-        componentManager.registerComponent(LayoutManager.class, new LayoutManagerImpl(application));
-        componentManager.registerComponent(ErrorManager.class, new ErrorManagerImpl());
+        serviceManager.registerService(LayoutManagerService.class, new LayoutManagerServiceImpl(application));
+        serviceManager.registerService(ErrorManagerService.class, new ErrorManagerServiceImpl());
     }
 }
